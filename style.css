@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Asul:wght@400;700&display=swap");
+/* font-family: "Asul", serif; */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+body {
+  background-color: pink;
+}
+:root {
+  --black: #000000;
+  --dark-red: #830000;
+  --medium-red: #bc0202;
+  -neon-red: #ff0000;
+  --white: #eeeeee;
+  --btn: #11b291;
+  --star: #e1b326;
+}
