@@ -8,9 +8,7 @@
   list-style: none;
   text-decoration: none;
 }
-body {
-  background-color: pink;
-}
+
 :root {
   --black: #000000;
   --dark-red: #830000;
@@ -19,4 +17,115 @@ body {
   --white: #eeeeee;
   --btn: #11b291;
   --star: #e1b326;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  background: var(--black);
+}
+header {
+  background-color: var(--black);
+  width: 100%;
+  min-height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+}
+header img {
+  width: 200px;
+  height: 100px;
+  object-fit: contain;
+}
+header .search-container {
+  flex-shrink: 0;
+  height: 100%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-container .search-box {
+  flex-shrink: 0;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  border-radius: 2rem;
+}
+.search-box input {
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  outline: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: clamp(1rem, 2vw, 1rem);
+  border-radius: inherit;
+}
+.search-box button {
+  background: rgb(14, 125, 14);
+  padding: 1rem 2rem;
+  height: 100%;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  right: 0;
+}
+.search-box button i {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--white);
+}
+.dropdown {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.126);
+}
+.dropdown select {
+  background: none;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-bottom: 2px solid var(--medium-red);
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: var(--white);
+}
+
+select option {
+  background-color: rgb(0, 0, 0);
+  padding: 1rem;
+  text-transform: capitalize;
+  color: var(--white);
+  font-weight: 100;
+}
+
+
+@media (max-width: 600px) {
+
+  header {
+    height: 10%;
+  }
+  header div {
+    flex: 1;
+  }
+  header img {
+    max-width: 100px;
+    max-height: 60px;
+  }
+
+  .search-container .search-box {
+    height: 60%;
+  }
 }
