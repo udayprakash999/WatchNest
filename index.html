@@ -15,32 +15,25 @@
       <img src="assets/LOGO.png" alt="" />
       <div class="search-container">
         <div class="search-box">
-          <input type="text" placeholder="Search movie.."/>
+          <input type="text" placeholder="Search movie.." />
           <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
       </div>
     </header>
-    
-    <div class="dropdown">
-      <select>
-        <option value="" >Popular</option>
-        <option value="">1hahaha</option>
-        <option value="">2</option>
-      </select>
-      <select>
-        <option value="">Top Rated</option>
-        <option value="">Ni bataungi</option>
-      </select>
-      <select>
-        <option value="">Upcoming</option>
-        <option value="">Hahaha</option>
-      </select>
-      <select>
-        <option value="">Genre</option>
-        <option value="">Action</option>
-        <option value="">komedii king</option>
-      </select>
-    </div>
+
+    <nav>
+      <li><a href="#popular">Popular</a></li>
+      <li><a href="#upcoming">Upcoming</a></li>
+      <li>
+        <a href="#genre" class="dropdown" id="genre-btn">Genre <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-menu" id="genre-menu">
+          <li><a href="">Action</a></li>
+          <li><a href="">Comedy</a></li>
+          <li><a href="">Drama</a></li>
+          <li><a href="">Horror</a></li>
+        </ul>
+      </li>
+    </nav>
 
    
 
