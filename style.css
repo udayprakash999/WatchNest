@@ -133,14 +133,14 @@ nav li:hover::before {
   left: 0;
   z-index: 50;
   padding: 1rem;
-  background:rgba(255, 255, 255, 0.178);
+  background: rgba(255, 255, 255, 0.178);
   min-width: 170px;
 
   display: none;
   flex-direction: column;
   gap: 5px;
 }
-.dropdown-menu.show{
+.dropdown-menu.show {
   display: flex;
 }
 .dropdown-menu li {
@@ -150,6 +150,42 @@ nav li:hover::before {
 }
 .dropdown-menu li a {
   font-weight: 100;
-  color:rgba(255, 255, 255, 0.76);
+  color: rgba(255, 255, 255, 0.76);
   font-size: clamp(1rem, 2vw, 1rem);
+}
+.movies {
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  gap: 2rem;
+  justify-content: center;
+  align-items: start;
+}
+.movie-card {
+  background: rgb(57, 17, 17);
+  width: 250px;
+   height: 350px;
+  border-radius: 2rem;
+  overflow: hidden;
+
+}
+@media (max-width: 900px) {
+  .movies {
+    gap: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .movies {
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+  }
+ 
+}
+@media (max-width: 280px) {
+  .movies {
+   justify-content: start;
+  }
+  
 }
