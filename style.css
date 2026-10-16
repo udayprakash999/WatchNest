@@ -33,6 +33,7 @@ header {
   align-items: center;
   gap: 1rem;
   padding: 0.5rem 1rem;
+  box-shadow: 1px 2px 0px rgba(255, 255, 255, 0.2);
 }
 header img {
   width: 200px;
@@ -45,11 +46,11 @@ header .search-container {
   width: 40%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 .search-container .search-box {
   flex-shrink: 0;
-  width: 80%;
+  width: 60%;
   height: 100%;
   display: flex;
   position: relative;
@@ -66,7 +67,6 @@ header .search-container {
   border-radius: inherit;
 }
 .search-box button {
-  background: rgb(14, 125, 14);
   padding: 1rem 2rem;
   height: 100%;
   width: 20%;
@@ -83,32 +83,48 @@ header .search-container {
 }
 .search-box button i {
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--white);
+  color: var(--btn);
+
 }
 
 nav {
+  position: sticky;
+  top: 0%;
   height: 6%;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 1rem;
+  background: var(--black);
+  z-index: 10000;
 }
+nav.scrolled{
+  position: fixed;
+  inset: 0;
+}
+nav button,
 nav li {
+  background: none;
+  outline: none;
+  border: none;
   width: 10%;
   height: 100%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
-nav li a {
+nav li a,
+nav button {
   color: var(--white);
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 600;
 }
 
-nav li::before {
+nav li::before,
+nav button:before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -116,12 +132,13 @@ nav li::before {
   width: 0;
   height: 4%;
   cursor: pointer;
-  background-color: azure;
+  background-color: var(--btn);
   transform-origin: center;
   transition: all 0.5s ease-out;
   transform: translateX(-50%);
 }
-nav li:hover::before {
+nav li:hover::before,
+nav button:hover::before {
   width: 80%;
 }
 .dropdown {
@@ -133,7 +150,7 @@ nav li:hover::before {
   left: 0;
   z-index: 50;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.178);
+  background-color: var(--black);
   min-width: 170px;
 
   display: none;
@@ -152,28 +169,103 @@ nav li:hover::before {
   font-weight: 100;
   color: rgba(255, 255, 255, 0.76);
   font-size: clamp(1rem, 2vw, 1rem);
+  cursor: pointer;
 }
 .movies {
   width: 100%;
-  min-height: 100vh;
   padding: 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 250px);
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: start;
+  gap: 2rem;
+  background: var(--white);
+  padding-top: 3rem;
 }
-.movie-card {
-  background: rgb(255, 211, 211);
-  width: 250px;
-   height: 350px;
-  border-radius: 2rem;
+.card {
+  width: 20%;
+  height: 420px;
+  position: relative;
+  border-radius: 1rem;
   overflow: hidden;
 }
-.movie-card img{
+.card-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  transition: all 0.25s ease-in;
+}
+.card-content {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem 0.5rem;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0);
+  transition: all 0.5s ease;
+}
+.name {
+  padding-left: 0.25rem;
+  border-left: 2px solid black;
+}
+.name h4 {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-weight: bold;
+  color: var(--white);
+  text-shadow: 1px 1px 2px black;
+}
+.name .date {
+  font-size: 1rem;
+  text-shadow: 1px 1px 0px black;
+  color: rgba(160, 156, 156, 0.792);
+}
+.rating {
+  opacity: 0;
+  color: var(--star);
+  font-weight: 700;
+  text-align: end;
+  transition: all 0.25s ease-in;
+}
+.rating .point {
+  color: var(--star);
+}
+.card-overview {
+  width: 100%;
+  height: 0%;
+  position: absolute;
+  bottom: 0;
+  padding: 1rem;
+  color: azure;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+.card:hover .card-overview {
+  opacity: 1;
+  height: 60%;
+  text-align: justify;
+}
+.card:hover .card-content {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+.card:hover .card-image img{
+  transform: scale(1.1);
+}
+.card:hover .card-content .rating{
+  opacity: 1;
 }
 @media (max-width: 900px) {
   .movies {
@@ -185,11 +277,9 @@ nav li:hover::before {
     gap: 1rem;
     padding: 1rem 0.5rem;
   }
- 
 }
 @media (max-width: 280px) {
   .movies {
-   justify-content: start;
+    justify-content: start;
   }
-  
 }
