@@ -237,7 +237,7 @@ nav button {
   transition: all 0.25s ease-in;
 }
 .rating .point {
-  color: var(--white);
+  color: var(--star);
 }
 .card-overview {
   width: 100%;
