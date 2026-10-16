@@ -1,4 +1,3 @@
-const api_key = window.APP_CONFIG.API_KEY;
 const nav = document.querySelector("nav");
 const header = document.querySelector("header");
 const upcoming = document.getElementById("upcoming");
@@ -28,7 +27,7 @@ window.addEventListener("click", (e) => {
     genereOpen = false;
   }
 });
-
+const api_key = `e7dfeebed18ea55af2842ab0282fcd56`;
 const API_Popular = `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=1`;
 const API_Upcoming = `https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}&language=en-US&page=1`;
 const img_path = `https://image.tmdb.org/t/p/w500/`;
