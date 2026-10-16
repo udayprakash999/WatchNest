@@ -14,7 +14,7 @@
   --black: #000000;
   --dark-red: #830000;
   --medium-red: #bc0202;
-  -neon-red: #ff0000;
+  --neon-red: #ff0000;
   --white: #eeeeee;
   --btn: #11b291;
   --star: #e1b326;
@@ -84,7 +84,6 @@ header .search-container {
 .search-box button i {
   font-size: clamp(1rem, 2vw, 1.2rem);
   color: var(--btn);
-
 }
 
 nav {
@@ -96,7 +95,7 @@ nav {
   gap: 1rem;
   background: var(--black);
 }
-nav.scrolled{
+nav.scrolled {
   z-index: 10000;
   position: fixed;
   inset: 0;
@@ -162,7 +161,7 @@ nav button {
   padding: 0.2rem;
   border-bottom: 1px solid #00000039;
 }
-.dropdown-menu li button:hover{
+.dropdown-menu li button:hover {
   transform: scale(1.2);
 }
 .dropdown-menu li button {
@@ -220,7 +219,7 @@ nav button {
   border-left: 2px solid black;
 }
 .name h4 {
-  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-size: clamp(1rem, 4vw, 1.1rem);
   font-weight: bold;
   color: var(--white);
   text-shadow: 1px 1px 2px black;
@@ -238,7 +237,7 @@ nav button {
   transition: all 0.25s ease-in;
 }
 .rating .point {
-  color: var(--dark-red);
+  color: var(--white);
 }
 .card-overview {
   width: 100%;
@@ -263,15 +262,18 @@ nav button {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
 }
-.card:hover .card-image img{
+.card:hover .card-image img {
   transform: scale(1.3);
 }
-.card:hover .card-content .rating{
+.card:hover .card-content .rating {
   opacity: 1;
 }
 @media (max-width: 900px) {
   .movies {
     gap: 1rem;
+  }
+  .movies .card{
+    width: 90%;
   }
 }
 @media (max-width: 600px) {
