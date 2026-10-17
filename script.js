@@ -33,20 +33,27 @@ const API_Upcoming = `https://api.themoviedb.org/3/movie/upcoming?api_key=${api_
 const img_path = `https://image.tmdb.org/t/p/w500/`;
 
 function fetchData(api) {
+  console.log("Request started:", api);
+
   fetch(api)
-    .then((result) => result.json())
+    .then((res) => res.json())
     .then((data) => {
-      generateCard(data.results);
+      console.log("Response from:", api);
+      console.log("Results:", data.results?.length);
+      console.log(data);
+      generateCard(data.results)
     })
-    .catch(console.error());
+    .catch(console.error);
 }
 function fetchGenere(genere) {
   const API_Genere = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${genere}&page=1`;
   fetchData(API_Genere);
 }
 function generateCard(data) {
+  console.log(data);
   cards.innerHTML = ``;
   data.forEach((elem) => {
+    // console.log(elem);
     const title = elem.title;
     const image = elem.poster_path
       ? `${img_path}${elem.poster_path}`
@@ -92,18 +99,20 @@ function searchMovie(q) {
 }
 
 popular.addEventListener("click", () => {
+  console.log("hell");
   fetchData(API_Popular);
 });
 upcoming.addEventListener("click", () => {
+  console.log("hehhll");
   fetchData(API_Upcoming);
 });
+fetchData(API_Popular)
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  let query = e.target[0].value;
+  let query = e.target[0].value.trim();
+  if (!query) return;
   searchMovie(query);
 });
-
-fetchData(API_Popular);
 
 let genereBtns = document.querySelectorAll(".genre-link");
 genereBtns.forEach((btn) => {
